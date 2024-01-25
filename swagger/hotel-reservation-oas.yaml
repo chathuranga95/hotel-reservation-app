@@ -1,0 +1,240 @@
+openapi: 3.0.0
+info:
+  title: Hotel Room Reservation API
+  version: 1.0.0
+paths:
+  /rooms:
+    get:
+      summary: Retrieve available rooms
+      parameters:
+        - in: query
+          name: checkin_date
+          schema:
+            type: string
+            format: date
+          description: The check-in date
+        - in: query
+          name: checkout_date
+          schema:
+            type: string
+            format: date
+          description: The check-out date
+        - in: query
+          name: room_type
+          schema:
+            type: string
+          description: The type of room (optional)
+      responses:
+        '200':
+          description: A list of available rooms
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoomList"
+
+  /reservations:
+    post:
+      summary: Create a new reservation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewReservation"
+      responses:
+        '201':
+          description: Reservation created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reservation"
+
+  /reservations/{reservation_id}:
+    delete:
+      summary: Remove a reservation
+      parameters:
+        - in: path
+          name: reservation_id
+          required: true
+          schema:
+            type: integer
+          description: The ID of the reservation to be removed
+      responses:
+        '204':
+          description: Reservation removed successfully
+
+    put:
+      summary: Update a reservation
+      parameters:
+        - in: path
+          name: reservation_id
+          required: true
+          schema:
+            type: integer
+          description: The ID of the reservation to be updated
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateReservation"
+      responses:
+        '200':
+          description: Reservation updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Reservation"
+
+  /user-reservations:
+    get:
+      summary: Retrieve reservations made by a user
+      parameters:
+        - in: query
+          name: nic_number
+          schema:
+            type: string
+          description: The NIC number of the user
+          required: true
+      responses:
+        '200':
+          description: A list of user reservations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReservationList"
+
+components:
+  schemas:
+    Room:
+      type: object
+      properties:
+        room_id:
+          type: integer
+        type:
+          type: string
+        availability:
+          type: boolean
+        facilities:
+          type: array
+          items:
+            type: string
+      example:
+        room_id: 1
+        type: "single"
+        availability: true
+        facilities: ["wifi", "tv"]
+    RoomList:
+      type: object
+      properties:
+        rooms:
+          type: array
+          items:
+            $ref: "#/components/schemas/Room"
+        count:
+          type: integer
+          example: 1
+
+    NewReservation:
+      type: object
+      properties:
+        room_id:
+          type: integer
+        user_info:
+          $ref: "#/components/schemas/UserInfo"
+        checkin_date:
+          type: string
+          format: date
+        checkout_date:
+          type: string
+          format: date
+      example:
+        room_id: 1
+        user_info:
+          nic_number: "123456789V"
+          tel_number: "1234567890"
+          email: "user@example.com"
+          passport_number: "ABC123456"
+        checkin_date: "2024-02-01"
+        checkout_date: "2024-02-05"
+
+    UpdateReservation:
+      type: object
+      properties:
+        room_id:
+          type: integer
+        user_info:
+          $ref: "#/components/schemas/UserInfo"
+        checkin_date:
+          type: string
+          format: date
+        checkout_date:
+          type: string
+          format: date
+      example:
+        room_id: 2
+        user_info:
+          nic_number: "987654321V"
+          tel_number: "9876543210"
+          email: "updated@example.com"
+          passport_number: "XYZ987654"
+        checkin_date: "2024-02-03"
+        checkout_date: "2024-02-08"
+
+    UserInfo:
+      type: object
+      properties:
+        nic_number:
+          type: string
+        tel_number:
+          type: string
+        email:
+          type: string
+          format: email
+        passport_number:
+          type: string
+      example:
+        nic_number: "123456789V"
+        tel_number: "1234567890"
+        email: "user@example.com"
+        passport_number: "ABC123456"
+
+    Reservation:
+      type: object
+      properties:
+        reservation_id:
+          type: integer
+        room:
+          $ref: "#/components/schemas/Room"
+        user_info:
+          $ref: "#/components/schemas/UserInfo"
+        checkin_date:
+          type: string
+          format: date
+        checkout_date:
+          type: string
+          format: date
+      example:
+        reservation_id: 123
+        room:
+          room_id: 1
+          type: "single"
+          availability: true
+          facilities: ["wifi", "tv"]
+        user_info:
+          nic_number: "123456789V"
+          tel_number: "1234567890"
+          email: "user@example.com"
+          passport_number: "ABC123456"
+        checkin_date: "2024-02-01"
+        checkout_date: "2024-02-05"
+    ReservationList:
+      type: object
+      properties:
+        reservations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Reservation"
+        count:
+          type: integer
+          example: 1
