@@ -111,6 +111,10 @@ components:
       properties:
         room_id:
           type: integer
+        hotel:
+          type: string
+        guest_capacity:
+          type: integer
         type:
           type: string
         availability:
@@ -122,6 +126,8 @@ components:
       example:
         room_id: 1
         type: "single"
+        hotel: "Hilton"
+        guest_capacity: 1
         availability: true
         facilities: ["wifi", "tv"]
     RoomList:
