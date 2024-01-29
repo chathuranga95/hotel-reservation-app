@@ -123,6 +123,8 @@ components:
           type: array
           items:
             type: string
+        price:
+          type: float
       example:
         room_id: 1
         type: "single"
@@ -130,6 +132,7 @@ components:
         guest_capacity: 1
         availability: true
         facilities: ["wifi", "tv"]
+        price: 100.00
     RoomList:
       type: object
       properties:
