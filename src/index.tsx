@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import RoomList from './RoomList';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,7 +15,7 @@ root.render(
           <Route path="/" Component={Home} />
           <Route path="/home" Component={Home} />
           {/* rooms */}
-          <Route path="/rooms" Component={()=><div>Room listing</div>} />
+          <Route path="/rooms" Component={RoomList} />
           {/* reservations */}
           <Route path="/reservations" Component={()=><div>Reservation listing</div>} />
           {/* reservation detail */}
