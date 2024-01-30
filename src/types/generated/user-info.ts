@@ -25,24 +25,24 @@ export interface UserInfo {
      * @type {string}
      * @memberof UserInfo
      */
-    'nic_number'?: string;
+    'nic_number': string;
     /**
      * 
      * @type {string}
      * @memberof UserInfo
      */
-    'tel_number'?: string;
+    'tel_number': string;
     /**
      * 
      * @type {string}
      * @memberof UserInfo
      */
-    'email'?: string;
+    'email': string;
     /**
      * 
      * @type {string}
      * @memberof UserInfo
      */
-    'passport_number'?: string;
+    'passport_number': string;
 }
 

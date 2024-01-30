@@ -25,36 +25,42 @@ export interface Room {
      * @type {number}
      * @memberof Room
      */
-    'room_id'?: number;
+    'room_id': number;
     /**
      * 
      * @type {string}
      * @memberof Room
      */
-    'hotel'?: string;
+    'hotel': string;
     /**
      * 
      * @type {number}
      * @memberof Room
      */
-    'guest_capacity'?: number;
+    'guest_capacity': number;
     /**
      * 
      * @type {string}
      * @memberof Room
      */
-    'type'?: string;
+    'type': string;
     /**
      * 
      * @type {boolean}
      * @memberof Room
      */
-    'availability'?: boolean;
+    'availability': boolean;
     /**
      * 
      * @type {Array<string>}
      * @memberof Room
      */
-    'facilities'?: Array<string>;
+    'facilities': Array<string>;
+    /**
+     * 
+     * @type {number}
+     * @memberof Room
+     */
+    'price': number;
 }
 

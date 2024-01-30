@@ -28,24 +28,24 @@ export interface NewReservation {
      * @type {number}
      * @memberof NewReservation
      */
-    'room_id'?: number;
+    'room_id': number;
     /**
      * 
      * @type {UserInfo}
      * @memberof NewReservation
      */
-    'user_info'?: UserInfo;
+    'user_info': UserInfo;
     /**
      * 
      * @type {string}
      * @memberof NewReservation
      */
-    'checkin_date'?: string;
+    'checkin_date': string;
     /**
      * 
      * @type {string}
      * @memberof NewReservation
      */
-    'checkout_date'?: string;
+    'checkout_date': string;
 }
 

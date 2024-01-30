@@ -31,30 +31,30 @@ export interface Reservation {
      * @type {number}
      * @memberof Reservation
      */
-    'reservation_id'?: number;
+    'reservation_id': number;
     /**
      * 
      * @type {Room}
      * @memberof Reservation
      */
-    'room'?: Room;
+    'room': Room;
     /**
      * 
      * @type {UserInfo}
      * @memberof Reservation
      */
-    'user_info'?: UserInfo;
+    'user_info': UserInfo;
     /**
      * 
      * @type {string}
      * @memberof Reservation
      */
-    'checkin_date'?: string;
+    'checkin_date': string;
     /**
      * 
      * @type {string}
      * @memberof Reservation
      */
-    'checkout_date'?: string;
+    'checkout_date': string;
 }
 

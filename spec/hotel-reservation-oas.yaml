@@ -125,6 +125,14 @@ components:
             type: string
         price:
           type: float
+      required:
+        - room_id
+        - hotel
+        - guest_capacity
+        - type
+        - availability
+        - facilities
+        - price
       example:
         room_id: 1
         type: "single"
@@ -143,7 +151,9 @@ components:
         count:
           type: integer
           example: 1
-
+      required:
+        - rooms
+        - count
     NewReservation:
       type: object
       properties:
@@ -157,6 +167,11 @@ components:
         checkout_date:
           type: string
           format: date
+      required:
+        - room_id
+        - user_info
+        - checkin_date
+        - checkout_date
       example:
         room_id: 1
         user_info:
@@ -180,6 +195,11 @@ components:
         checkout_date:
           type: string
           format: date
+      required:
+        - room_id
+        - user_info
+        - checkin_date
+        - checkout_date
       example:
         room_id: 2
         user_info:
@@ -202,6 +222,11 @@ components:
           format: email
         passport_number:
           type: string
+      required:
+        - nic_number
+        - tel_number
+        - email
+        - passport_number
       example:
         nic_number: "123456789V"
         tel_number: "1234567890"
@@ -223,6 +248,12 @@ components:
         checkout_date:
           type: string
           format: date
+      required:
+        - reservation_id
+        - room
+        - user_info
+        - checkin_date
+        - checkout_date
       example:
         reservation_id: 123
         room:

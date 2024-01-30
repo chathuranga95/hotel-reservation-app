@@ -28,12 +28,12 @@ export interface RoomList {
      * @type {Array<Room>}
      * @memberof RoomList
      */
-    'rooms'?: Array<Room>;
+    'rooms': Array<Room>;
     /**
      * 
      * @type {number}
      * @memberof RoomList
      */
-    'count'?: number;
+    'count': number;
 }
 
